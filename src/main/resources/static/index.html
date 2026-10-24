@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalentIQ — Free AI Interview Question Generator</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%232563eb'/><stop offset='100%25' stop-color='%234f46e5'/></linearGradient></defs><rect width='100' height='100' rx='24' fill='url(%23g)'/><path d='M32 30h36a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H46l-12 10v-10h-2a6 6 0 0 1-6-6V36a6 6 0 0 1 6-6z' fill='white'/><circle cx='42' cy='46' r='3.5' fill='%232563eb'/><circle cx='52' cy='46' r='3.5' fill='%232563eb'/><circle cx='62' cy='46' r='3.5' fill='%232563eb'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner container">
+      <a href="/" class="logo">
+        <svg class="logo-svg" width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2563eb"/>
+              <stop offset="100%" stop-color="#4f46e5"/>
+            </linearGradient>
+          </defs>
+          <rect width="40" height="40" rx="10" fill="url(#logoGrad)"/>
+          <path d="M12 12H28C30.2 12 32 13.8 32 16V26C32 28.2 30.2 30 28 30H18L12 34V16C12 13.8 13.8 12 16 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="18" cy="21" r="1.5" fill="white"/>
+          <circle cx="22" cy="21" r="1.5" fill="white"/>
+          <circle cx="26" cy="21" r="1.5" fill="white"/>
+        </svg>
+        <span class="logo-text">Talent<span class="logo-accent">IQ</span></span>
+      </a>
+
+      <!-- Clean, Professional Navigation (No dead buttons) -->
+      <nav class="header-nav">
+        <a href="#generator" class="nav-link active">Generator</a>
+        <a href="#how-to-use" class="nav-link">How It Works</a>
+        <a href="#master-bank" class="nav-link">Question Library</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── HERO ───────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">
+        Free AI Interview Question <span class="hero-blue">Generator</span> <span class="sparkle">✦</span>
+      </h1>
+      <p class="hero-subtitle">
+        Get tailored interview questions for any job, skill level, or industry in seconds.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── GENERATOR CARD ─────────────────────────────────────────────────── -->
+  <section id="generator" class="generator-section">
+    <div class="container">
+      <div class="generator-card">
+
+        <!-- Unified Single-Row Form (No optional tags, perfectly aligned) -->
+        <form id="questionForm" class="form-row" novalidate>
+
+          <!-- Job Title -->
+          <div class="field-group field-job">
+            <label class="field-label" for="jobTitle">Job Title</label>
+            <input
+              id="jobTitle"
+              type="text"
+              class="field-input"
+              placeholder="e.g. Software Engineer"
+              value="Software Engineer"
+              maxlength="100"
+              required
+            />
+            <span class="field-error" id="jobTitleError"></span>
+          </div>
+
+          <!-- Seniority Level (Mandatory / Required Parameter) -->
+          <div class="field-group field-select">
+            <label class="field-label" for="level">Seniority Level</label>
+            <div class="select-wrap">
+              <select id="level" class="field-input">
+                <option value="junior" selected>Junior</option>
+                <option value="mid">Mid-Level</option>
+                <option value="senior">Senior</option>
+                <option value="lead">Lead</option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+          </div>
+
+          <!-- Question Type (Mandatory / Required Parameter) -->
+          <div class="field-group field-select">
+            <label class="field-label" for="type">Question Type</label>
+            <div class="select-wrap">
+              <select id="type" class="field-input">
+                <option value="technical" selected>Technical</option>
+                <option value="mixed">Mixed</option>
+                <option value="behavioral">Behavioral</option>
+                <option value="situational">Situational</option>
+                <option value="skill-based">Skill based</option>
+                <option value="competency-based">Competency based</option>
+                <option value="fact-based">Fact based</option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+          </div>
+
+          <!-- Language -->
+          <div class="field-group field-select field-lang">
+            <label class="field-label" for="language">Language</label>
+            <div class="select-wrap">
+              <select id="language" class="field-input">
+                <option value="English" selected>Eng (US)</option>
+                <option value="English (UK)">Eng (UK)</option>
+                <option value="German">German</option>
+                <option value="French">French</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Polish">Polish</option>
+                <option value="Italian">Italian</option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="field-group field-btn">
+            <button type="submit" class="btn-generate" id="generateBtn">
+              <span class="btn-icon">⚡</span>
+              <span class="btn-text">Generate</span>
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-state hidden">
+          <div class="ai-loader">
+            <div class="ai-icon-wrap">
+              <span class="ai-icon">AI</span>
+              <div class="ai-pulse"></div>
+            </div>
+            <div class="loader-bars">
+              <div class="loader-bar"></div>
+              <div class="loader-bar"></div>
+              <div class="loader-bar"></div>
+            </div>
+          </div>
+          <p class="loading-text">Generating your top-class Interview Questions. It may take up to 10 seconds.</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" class="error-state hidden">
+          <span class="error-icon">⚠️</span>
+          <p id="errorMessage">Something went wrong. Please try again.</p>
+          <button class="btn-retry" onclick="retryGenerate()">Try Again</button>
+        </div>
+
+      </div>
+
+      <!-- ── FEATURES STRIP ───────────────────────────────────────────────── -->
+      <div id="features" class="features-strip">
+        <div class="feature-item">
+          <span class="feature-check">✓</span>
+          <span>Time Saving</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span>
+          <span>Tailored Questions</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span>
+          <span>Answers Included</span>
+        </div>
+      </div>
+
+      <!-- ── TESTIMONIAL QUOTE (Tailored to TalentIQ) ──────────────────────── -->
+      <div class="testimonial-box">
+        <p class="testimonial-quote">
+          &ldquo;TalentIQ&rsquo;s AI interview question generator helps us ask the right questions to candidates. This streamlines our interview process, reduces hiring time, and lowers turnover rates. It is so easy for us now to create great interview questions for any role in seconds.&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <span class="stars">★★★★★</span>
+          <span class="author-name">&mdash; Meghan Rao (Recruitment Partner)</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── RESULTS SECTION (Clean SaaS Layout) ────────────────────────────── -->
+  <section id="resultsSection" class="results-section hidden">
+    <div class="container">
+
+      <!-- Clean Results Header Card -->
+      <div class="results-header">
+        <div class="results-header-left">
+          <h2 class="results-title">Interview Questions</h2>
+          <div class="results-toggle-row">
+            <label class="toggle-label" for="showAllAnswers">
+              <span class="toggle-text">SHOW ALL ANSWERS</span>
+              <div class="toggle-switch">
+                <input type="checkbox" id="showAllAnswers" />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="results-header-right">
+          <button class="btn-copy" id="copyBtn" onclick="copyAllQuestions()">
+            <span class="btn-copy-icon">📋</span> Copy
+          </button>
+          <button class="btn-regenerate" onclick="regenerate()">
+            <span>🔄</span> Regenerate
+          </button>
+        </div>
+      </div>
+
+      <!-- Categories & Questions Container -->
+      <div id="categoriesContainer" class="categories-container"></div>
+
+    </div>
+  </section>
+
+  <!-- ── HOW TO USE OUR INTERVIEW QUESTION GENERATOR ────────────────────── -->
+  <section id="how-to-use" class="how-to-use-section">
+    <div class="container">
+      <h2 class="section-title text-center">How to use Our Interview Question Generator?</h2>
+
+      <div class="how-to-use-grid">
+        <!-- Left: 5 Numbered Steps (No optional tags) -->
+        <div class="how-steps-list">
+
+          <!-- Step 1 -->
+          <div class="how-step-item">
+            <div class="how-step-number">1</div>
+            <div class="how-step-content">
+              <h3 class="how-step-title">Enter Job Title</h3>
+              <p class="how-step-desc">
+                Simply input the job title for the position you are hiring for. Our intelligent system instantly analyzes the core competencies and responsibilities associated with the role to generate relevant questions with answers.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="how-step-item">
+            <div class="how-step-number">2</div>
+            <div class="how-step-content">
+              <h3 class="how-step-title">Choose the level of Seniority</h3>
+              <p class="how-step-desc">
+                Tailor the complexity and focus of your questions by selecting the appropriate seniority level. Choose from:
+              </p>
+              <ul class="how-step-sublist">
+                <li><strong>Low:</strong> Ideal for entry-level positions, focusing on foundational knowledge and potential.</li>
+                <li><strong>Medium:</strong> Suited for candidates with moderate experience, probing deeper into their practical skills and accomplishments.</li>
+                <li><strong>High:</strong> Designed for senior and leadership roles, emphasizing extensive experience, strategic thinking, and leadership capabilities.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="how-step-item">
+            <div class="how-step-number">3</div>
+            <div class="how-step-content">
+              <h3 class="how-step-title">Select Questions Type</h3>
+              <p class="how-step-desc">
+                Select from various question categories, including:
+              </p>
+              <div class="types-tags-grid">
+                <span class="type-tag">• Technical</span>
+                <span class="type-tag">• Behavioral</span>
+                <span class="type-tag">• Situational</span>
+                <span class="type-tag">• Skill based</span>
+                <span class="type-tag">• Competency based</span>
+                <span class="type-tag">• Fact based</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="how-step-item">
+            <div class="how-step-number">4</div>
+            <div class="how-step-content">
+              <h3 class="how-step-title">Break Language Barriers with Multilingual Support</h3>
+              <p class="how-step-desc">
+                Our free AI Interview Questions Generator is a global tool. Generate top-tier interview questions in a variety of languages, including
+                <strong>English (US)</strong>, <strong>English (UK)</strong>, <strong>German</strong>, <strong>French</strong>, <strong>Spanish</strong>, <strong>Arabic</strong>, <strong>Portuguese</strong>, <strong>Polish</strong>, and <strong>Italian</strong>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="how-step-item">
+            <div class="how-step-number">5</div>
+            <div class="how-step-content">
+              <h3 class="how-step-title">Review and Customize</h3>
+              <p class="how-step-desc">
+                This is the part where the <strong>Magic Happens</strong>. Click generate and our next-gen AI engine will generate perfect interview questions according to your needs. These interview questions can be used to hire great candidates.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Decorative Card with Dot-Matrix Pattern & Preview -->
+        <div class="how-visual-card">
+          <div class="dot-matrix-box">
+            <div class="dot-grid">
+              <span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span>
+              <span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-purple"></span><span class="dot d-purple"></span>
+              <span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-purple"></span><span class="dot d-purple"></span>
+              <span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-purple"></span><span class="dot d-purple"></span>
+              <span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-purple"></span><span class="dot d-purple"></span><span class="dot d-purple"></span>
+              <span class="dot d-blue"></span><span class="dot d-blue"></span><span class="dot d-purple"></span><span class="dot d-purple"></span><span class="dot d-purple"></span><span class="dot d-purple"></span>
+              <span class="dot d-purple"></span><span class="dot d-purple"></span><span class="dot d-purple"></span><span class="dot d-purple"></span><span class="dot d-purple"></span><span class="dot d-purple"></span>
+            </div>
+            <div class="visual-floating-card">
+              <div class="v-card-header">
+                <span class="v-dot red"></span>
+                <span class="v-dot yellow"></span>
+                <span class="v-dot green"></span>
+                <span class="v-title">TalentIQ Engine</span>
+              </div>
+              <div class="v-card-body">
+                <div class="v-line v-long"></div>
+                <div class="v-line v-med"></div>
+                <div class="v-line v-short"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── QUESTION LIBRARY SECTION ───────────────────────────────────────── -->
+  <section id="master-bank" class="master-bank-section">
+    <div class="container">
+      <div class="section-header-wrap">
+        <h2 class="section-title">Explore Interview Questions by Topic</h2>
+        <p class="section-desc">
+          Browse our comprehensive question library with verified model answers covering core engineering and technical disciplines.
+        </p>
+      </div>
+
+      <!-- Topic Pills -->
+      <div class="topic-pills" id="topicPills">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Selected Topic Viewer -->
+      <div id="topicViewer" class="topic-viewer hidden">
+        <div class="topic-viewer-header">
+          <div>
+            <h3 id="currentTopicTitle" class="current-topic-title">Topic Questions</h3>
+            <span id="currentTopicCount" class="current-topic-count"></span>
+          </div>
+          <label class="toggle-label" for="toggleTopicAnswers">
+            <span class="toggle-text">SHOW ANSWERS</span>
+            <div class="toggle-switch">
+              <input type="checkbox" id="toggleTopicAnswers" />
+              <span class="toggle-slider"></span>
+            </div>
+          </label>
+        </div>
+        <div id="topicQuestionsList" class="question-list"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="10" fill="#2563eb"/>
+          <path d="M12 12H28C30.2 12 32 13.8 32 16V26C32 28.2 30.2 30 28 30H18L12 34V16C12 13.8 13.8 12 16 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="footer-brand">Talent<span class="footer-accent">IQ</span></span>
+      </div>
+      <div class="footer-nav">
+        <a href="#generator">Generator</a>
+        <a href="#how-to-use">How It Works</a>
+        <a href="#master-bank">Question Library</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 TalentIQ. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
